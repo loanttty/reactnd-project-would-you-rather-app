@@ -166,7 +166,7 @@ let users = {
           }
         }
   
-        res(formattedQuestion)
+        res({formattedQuestion,users})
       }, 1000)
     })
   }
