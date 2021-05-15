@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import CreateVote from './CreateVote';
+import DisplayVote from './DisplayVote';
 
 class HomePage extends Component {
     render() {
@@ -9,12 +11,14 @@ class HomePage extends Component {
                                     .sort((a,b) => b.timestamp - a.timestamp)
         const answeredQuestions = questions.filter((question) => answeredQuestionList.indexOf(question.id) !== -1)
                                     .sort((a,b) => b.timestamp - a.timestamp)
-        console.log(answeredQuestionList)
+        console.log(unansweredQuestions)
         console.log(answeredQuestions)
         return (
             <div className="home">
                 <div className="unansweredQuestions">
                     <h3>Unanswered Questions</h3>
+                    <DisplayVote answeredQuestions={answeredQuestions}/>
+                    <CreateVote unansweredQuestions={unansweredQuestions} answeredQuestions={answeredQuestions}/>
                     <ul>
                         {unansweredQuestions.map((question) =>
                             <li key={question.id}>
@@ -24,7 +28,9 @@ class HomePage extends Component {
                                 <div className="question">
                                     Would you rather
                                     <div className="option">{question.optionOne.text}</div>
-                                    <button className="viewFull" type="submit">View Full</button>
+                                    <button className="viewFull" 
+                                            type="submit"
+                                            >View Full</button>
                                 </div>
                             </li>
                         )}

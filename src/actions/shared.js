@@ -1,9 +1,9 @@
 import {receiveQuestions} from "./questions"
 import {receiveUsers} from "./users"
-import {setAuthedUser} from "./authedUser"
+//import {setAuthedUser} from "./authedUser"
 import {_getQuestions, _getUsers} from "../utils/_DATA"
 
-const AUTHED_ID = "sarahedo"
+//const AUTHED_ID = "sarahedo"
 
 export function handleInitialUpdateStoreQuestions () {
     return (dispatch) => {
@@ -17,6 +17,6 @@ export function handleInitialUpdateStoreUsers () {
                 .then((users) => dispatch(receiveUsers(users)))
     }
 }
-export function handleInitialUpdateStoreAuthedUser () {
-    return (dispatch) => dispatch(setAuthedUser(AUTHED_ID))
-}
+/*export function handleInitialUpdateStoreAuthedUser (id) {
+    return (dispatch) => dispatch(setAuthedUser(id))
+}*/
