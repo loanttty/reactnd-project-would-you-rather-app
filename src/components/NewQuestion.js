@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { Redirect} from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
@@ -7,7 +8,8 @@ class NewQuestion extends Component {
         options:{
             optionOne: '',
             optionTwo: ''
-        }
+        },
+        toHome: false
     }
 
     handleOnChange =(e) => {
@@ -17,7 +19,8 @@ class NewQuestion extends Component {
             options:{
                 ...oldState.options,
                 [name]: value
-            }
+            },
+            toHome: false
         }))
     }
 
@@ -32,12 +35,18 @@ class NewQuestion extends Component {
             options:{
                 optionOne: '',
                 optionTwo: ''
-            }
+            },
+            toHome: true
         }))
     }
     render() {
         const {optionOne,optionTwo} = this.state.options
-        console.log(this.state)
+        const {toHome} = this.state
+
+        if (toHome === true) {
+            return <Redirect to="/" />
+        }
+        
         return (
             <div className="newQuestion">
                 <h3>New Question</h3>

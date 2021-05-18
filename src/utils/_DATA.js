@@ -173,8 +173,6 @@ let users = {
   
   export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     return new Promise((res, rej) => {
-      console.log(qid)
-      console.log(answer)
       setTimeout(() => {
         users = {
           ...users,
@@ -200,6 +198,31 @@ let users = {
   
         res({users,questions})
       }, 500)
+    })
+  }
+
+  function formatUser ({ id, name, avatarURL }) {
+    return {
+      id,
+      name,
+      avatarURL,
+      answers: {},
+      questions: [],
+    }
+  }
+
+  export function _saveNewUser (user) {
+    return new Promise((res, rej) => {
+      const formattedUser = formatUser(user);
+  
+      setTimeout(() => {
+        users = {
+          ...users,
+          [formattedUser.id]: formattedUser
+        }
+  
+        res(formattedUser)
+      }, 1000)
     })
   }
   

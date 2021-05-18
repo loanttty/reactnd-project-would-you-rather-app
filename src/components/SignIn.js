@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { handleSetAuthedUser } from '../actions/authedUser';
+import { handleAddUser } from '../actions/users';
 
 class SignIn extends Component {
     state = {
-        selectedId:''
+        selectedId:'',
+        id:'',
+        name:'',
+        avatarURL:'',
+        expandedSection: false
     }
     updateSelectedId = (e) => {
         e.preventDefault()
@@ -17,9 +22,32 @@ class SignIn extends Component {
         e.preventDefault()
         this.props.dispatch(handleSetAuthedUser(this.state.selectedId))
     }
+    
+    expand = (e) => {
+        e.preventDefault()
+        this.setState(() => ({
+            expandedSection: true
+        }))
+    }
+
+    updateNewId = (e) => {
+        e.preventDefault()
+        const {name, value} = e.target
+        this.setState((oldState) => ({
+            ...oldState,
+            [name]: value
+        }))
+    }
+
+    handleCreateUserId = (e) => {
+        e.preventDefault()
+        const {id, name, avatarURL} = this.state
+        this.props.dispatch(handleAddUser(id, name, avatarURL))
+    }
 
     render() {
         const userIds = this.props.userIds
+        const {expandedSection} = this.state
         return(
             <div className="signIn">
                 <h3>Welcome to Would You Rather App</h3>
@@ -32,6 +60,15 @@ class SignIn extends Component {
                     </select>
                     <button type="submit" className="btn">Sign In</button>
                 </form>
+                <button type="submit" className="btn" onClick={this.expand}>Can't find yourself in the list?</button>
+                {expandedSection === true
+                    ? <form id="NewUserId" onSubmit={this.handleCreateUserId}>
+                        <input type="text" name="id" placeholder="Enter your user Id" onChange={this.updateNewId}/>
+                        <input type="text" name="name" placeholder="Enter your namw" onChange={this.updateNewId}/>
+                        <input type="text" name="avatarURL" placeholder="Enter URL of your avatar" onChange={this.uupdateNewId}/>
+                        <button type="submit" className="btn">Sign Up</button>
+                    </form>
+                    : null}
             </div>
         )
     }

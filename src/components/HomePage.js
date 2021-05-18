@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import CreateVote from './CreateVote';
-import DisplayVote from './DisplayVote';
+import DisplayQuestion from './DisplayQuestions';
 
 class HomePage extends Component {
     render() {
@@ -11,46 +10,28 @@ class HomePage extends Component {
                                     .sort((a,b) => b.timestamp - a.timestamp)
         const answeredQuestions = questions.filter((question) => answeredQuestionList.indexOf(question.id) !== -1)
                                     .sort((a,b) => b.timestamp - a.timestamp)
-        console.log(unansweredQuestions)
-        console.log(answeredQuestions)
         return (
             <div className="home">
                 <div className="unansweredQuestions">
                     <h3>Unanswered Questions</h3>
-                    <DisplayVote answeredQuestions={answeredQuestions}/>
-                    <CreateVote unansweredQuestions={unansweredQuestions} answeredQuestions={answeredQuestions}/>
                     <ul>
-                        {unansweredQuestions.map((question) =>
-                            <li key={question.id}>
-                                <img src={users[question.author].avatarURL}
-                                    alt={`Avatar of ${users[question.author].name}`}
-                                    className="avatar"/>
-                                <div className="question">
-                                    Would you rather
-                                    <div className="option">{question.optionOne.text}</div>
-                                    <button className="viewFull" 
-                                            type="submit"
-                                            >View Full</button>
-                                </div>
-                            </li>
-                        )}
+                        { unansweredQuestions.length > 0
+                            ? unansweredQuestions.map((question) =>
+                                <li key={question.id}>
+                                    <DisplayQuestion question={question} users={users} />
+                                </li>)
+                            : "You have answered all questions."}
                     </ul>
                 </div>
                 <div className="answeredQuestions">
                     <h3>Answered Questions</h3>
                     <ul>
-                        {answeredQuestions.map((question) =>
-                            <li key={question.id}>
-                                <img src={users[question.author].avatarURL}
-                                    alt={`Avatar of ${users[question.author].name}`}
-                                    className="avatar"/>
-                                <div className="question">
-                                    Would you rather
-                                    <div className="option">{question.optionOne.text}</div>
-                                    <button className="viewFull" type="submit">View Full</button>
-                                </div>
-                            </li>
-                        )}
+                        { answeredQuestions.length > 0
+                            ? answeredQuestions.map((question) =>
+                                <li key={question.id}>
+                                    <DisplayQuestion question={question} users={users} />
+                                </li>)
+                            : "No question answered yet."}
                     </ul>
                 </div>
             </div>
