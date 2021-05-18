@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Redirect } from 'react-router';
 import {handleVoteUpdating} from "../actions/questions"
+import DisplayVote from './DisplayVote';
 
 class CreateVote extends Component {
     state = {
@@ -60,29 +61,14 @@ class CreateVote extends Component {
                             <button type="submit" className="btn">Submit</button>
                         </form>
                     </div>
-                    : <div className="answered">
-                            <h4>Asked by {users[question[0].author].name}:</h4>
-                            <img src={users[question[0].author].avatarURL} alt={`Avatar of ${question[0].author}`}/>
-                            <div className="voteResult">
-                                Result:
-                                <div className="optionOne">
-                                    Would you rather {question[0].optionOne.text}
-                                    {question[0].optionOne.votes.filter((id) => id === authedUser).length === 1
-                                    ? "You voted this" : null}
-                                    Progress Bar from React Bootstrap
-                                    <br />
-                                    {question[0].optionOne.votes.length} out of {question[0].optionOne.votes.length + question[0].optionTwo.votes.length}
-                                </div>
-                                <div className="optionOne">
-                                    Would you rather {question[0].optionTwo.text}
-                                    {question[0].optionTwo.votes.filter((id) => id === authedUser).length === 1
-                                    ? "You voted this" : null}
-                                    Progress Bar from React Bootstrap
-                                    <br />
-                                    {question[0].optionTwo.votes.length} out of {question[0].optionOne.votes.length + question[0].optionTwo.votes.length}
-                                </div>
-                            </div>
-                    </div>
+                    : <DisplayVote userName={users[question[0].author].name}
+                                   userAvatar={users[question[0].author].avatarURL}
+                                   userId={question[0].author}
+                                   authedUser={authedUser}
+                                   votesOptionOne={question[0].optionOne.votes}
+                                   optionOneText={question[0].optionOne.text}
+                                   votesOptionTwo={question[0].optionTwo.votes} 
+                                   optionTwoText={question[0].optionTwo.text} />
                     }
                 </div>)
         } else {

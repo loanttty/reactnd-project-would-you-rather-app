@@ -1,5 +1,45 @@
-.App {
+.App .nav {
   text-align: center;
+  color: cornflowerblue;
+  background-color: #282c34;
+  padding: 20px 100px;
+}
+
+.App .navList {
+  margin: 0;
+}
+
+.App .navItem {
+  display: inline;
+  padding-right: 80px;
+}
+
+.App .link {
+  color: cornflowerblue;
+  text-decoration: none;
+  width: 80px;
+}
+
+.App .active {
+  text-decoration: none;
+  color: palevioletred;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.App .logOut {
+  display: inline;
+  margin-left: 100px;
+}
+
+.App .logOutBtn {
+  color: cornflowerblue;
+  text-decoration: none;
+  border: cornflowerblue solid 0.05em;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bolder;
+  margin-left: 20px;
 }
 
 .App-logo {
