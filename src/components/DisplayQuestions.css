@@ -1,0 +1,30 @@
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+.avatar {
+  height: 70px;
+  border-radius: 50px;
+  margin: 15px;
+}
+
+.questionNotInFull {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0.02, 0.04);
+}
+
+.question {
+  margin-left: 30px;
+}
+
+.optionText {
+  font-style: italic;
+  font-size: larger;
+}

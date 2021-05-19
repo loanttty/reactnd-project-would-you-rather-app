@@ -1,0 +1,25 @@
+.newQuestion {
+  padding: 10px;
+  border: cornflowerblue solid 0.05em;
+  border-radius: 20px;
+  margin: 20px auto;
+  width: 600px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0.02, 0.04);
+}
+
+h4 {
+  text-align: center;
+  color: palevioletred;
+}
+
+.options {
+  text-align: center;
+}
+
+.option {
+  margin: 10px auto;
+  width: 400px;
+  border: royalblue dotted 0.05em;
+  border-radius: 20px;
+  padding: 0 10px;
+}

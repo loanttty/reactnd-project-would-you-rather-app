@@ -24,15 +24,17 @@ function Nav (props) {
                     </NavLink>
                 </li>
                 <li className="logOut">
-                    {authedUser === null ? "Hello, guest!" : `Welcome, ${users[authedUser].name}!`}
-                    {authedUser === null 
-                        ? null 
-                        : <NavLink to="/" exact 
-                                        className="logOutBtn"
-                                        onClick={(e)=>{
-                                            e.preventDefault()
-                                            props.dispatch(handleSetAuthedUser(null))}}>
-                        Log Out</NavLink>}
+                    <p className="logOut">
+                        {authedUser === null ? "Hello, guest!" : `Welcome, ${users[authedUser].name}!`}
+                        {authedUser === null 
+                            ? null 
+                            : <NavLink to="/" exact 
+                            className="logOutBtn"
+                            onClick={(e)=>{
+                                e.preventDefault()
+                                props.dispatch(handleSetAuthedUser(null))}}>
+                            Log Out</NavLink>}
+                    </p>
                 </li>
             </ul>
         </nav>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Redirect} from 'react-router-dom'
-import { handleAddQuestion } from '../actions/questions';
+import { handleAddQuestion } from '../actions/questions'
+import "./NewQuestion.css"
 
 class NewQuestion extends Component {
     state ={
@@ -51,15 +52,17 @@ class NewQuestion extends Component {
             <div className="newQuestion">
                 <h3>New Question</h3>
                 <h4>Complete the question:</h4>
-                <p>Would you rather...</p>
+                <p style={{paddingTop :"10px"}}>Would you rather...</p>
                 <form className="options" onSubmit={this.handleSubmit}>
-                    <input name="optionOne" 
+                    <input name="optionOne"
+                            className="option"
                             type="text"
                             value={optionOne}
                             placeholder="Enter Option One Text Here" 
                             onChange={this.handleOnChange} />
                     <p>OR</p>
-                    <input name="optionTwo" 
+                    <input name="optionTwo"
+                            className="option" 
                             type="text"
                             value={optionTwo}
                             placeholder="Enter Option Two Text Here" 

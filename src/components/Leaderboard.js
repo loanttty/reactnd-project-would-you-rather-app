@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import "./Leaderboard.css"
 
  function Leaderboard (props) {
     const users = props.users
@@ -6,7 +7,7 @@ import { connect } from "react-redux";
         <div className="leaderboard">
             <ul>
                 {users.map((user) =>
-                    <li key={user.id} className="score">
+                    <li key={user.id} className="scoreCard">
                         <img src={user.avatarURL}
                              alt={`Avatar of ${user.name}`}
                              className="avatar" />
@@ -14,7 +15,10 @@ import { connect } from "react-redux";
                             <h4>{user.name}</h4>
                             <p>Answered Questions: {Object.keys(user.answers).length}</p>
                             <p>Created Questions: {user.questions.length}</p>
-                            <p>Score: {Object.keys(user.answers).length + user.questions.length}</p>
+                        </div>
+                        <div className="totalScore">
+                            <p>Score</p>
+                            <div className="score">{Object.keys(user.answers).length + user.questions.length}</div>
                         </div>
                     </li>)}
             </ul>

@@ -1,0 +1,37 @@
+.scoreCard {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  display: flex;
+  margin: 20px auto;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0.02, 0.04);
+}
+
+.avatar {
+  height: 70px;
+  border-radius: 50px;
+  margin: 15px;
+}
+
+.scoreInfo {
+  margin-left: 30px;
+}
+
+.totalScore {
+  margin-left: 30px;
+  text-align: center;
+}
+
+.score {
+  border-radius: 60px;
+  padding: 20px;
+  margin-top: 5px;
+  border: 3px solid palevioletred;
+  text-align: center;
+  background-color: peachpuff;
+  color: palevioletred;
+  font-weight: bolder;
+  font-size: 20px;
+}

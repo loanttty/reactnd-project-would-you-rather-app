@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Link, withRouter} from 'react-router-dom'  
+import "./DisplayQuestions.css"
 
 
 class DisplayQuestion extends Component {
@@ -12,10 +13,10 @@ class DisplayQuestion extends Component {
                     alt={`Avatar of ${users[question.author].name}`}
                     className="avatar"/>
                 <div className="question">
-                    Would you rather
-                    <div className="option">{question.optionOne.text}</div>
-                    <button className="viewFull" type="submit">
-                        <Link to={`/questions/${question.id}`} className="vote">
+                    <h4>Would you rather</h4>
+                    <div className="optionText">...{question.optionOne.text}...</div>
+                    <button className="btn">
+                        <Link to={`/questions/${question.id}`} style={{textDecoration: "none"}}>
                             View Full
                         </Link>
                     </button>

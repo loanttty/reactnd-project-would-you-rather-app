@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import DisplayQuestion from './DisplayQuestions';
+import "./HomePage.css"
+import { Tabs, Tab } from "react-bootstrap"
 
 class HomePage extends Component {
     render() {
@@ -12,20 +14,19 @@ class HomePage extends Component {
                                     .sort((a,b) => b.timestamp - a.timestamp)
         return (
             <div className="home">
-                <div className="unansweredQuestions">
-                    <h3>Unanswered Questions</h3>
-                    <ul>
+                <Tabs defaultActiveKey="unansweredQuestions" id="tabs">
+                    <Tab eventKey="unansweredQuestions" title="Unanswered Questions">
+                        <ul>
                         { unansweredQuestions.length > 0
                             ? unansweredQuestions.map((question) =>
                                 <li key={question.id}>
                                     <DisplayQuestion question={question} users={users} />
                                 </li>)
                             : "You have answered all questions."}
-                    </ul>
-                </div>
-                <div className="answeredQuestions">
-                    <h3>Answered Questions</h3>
-                    <ul>
+                        </ul>
+                    </Tab>
+                    <Tab eventKey="answeredQuestions" title="Answered Questions">
+                        <ul>
                         { answeredQuestions.length > 0
                             ? answeredQuestions.map((question) =>
                                 <li key={question.id}>
@@ -33,7 +34,8 @@ class HomePage extends Component {
                                 </li>)
                             : "No question answered yet."}
                     </ul>
-                </div>
+                    </Tab>
+                </Tabs>
             </div>
         )
     }
