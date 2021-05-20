@@ -22,9 +22,27 @@ li {
 
 .question {
   margin-left: 30px;
+  text-align: center;
 }
 
 .optionText {
   font-style: italic;
   font-size: larger;
+  margin: 10px;
+}
+
+.viewFullBtn {
+  color: cornflowerblue;
+  text-decoration: none;
+  font-weight: bolder;
+  padding: 5px 10px;
+  width: 80px;
+  border: cornflowerblue solid 0.01em;
+  border-radius: 20px;
+  transition: all 200ms ease-in-out;
+}
+
+.viewFullBtn:hover {
+  background-color: cornflowerblue;
+  color: whitesmoke;
 }

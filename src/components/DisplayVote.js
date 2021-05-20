@@ -1,5 +1,6 @@
 import React from 'react'
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import "./DisplayVote.css"
+import {Row, Col, ProgressBar} from "react-bootstrap"
 
 export default function DisplayVote (props) {
     const {userName, 
@@ -11,31 +12,39 @@ export default function DisplayVote (props) {
            votesOptionTwo,
            optionTwoText} = props
     const totalVotes = votesOptionOne.length + votesOptionTwo.length
-    const optionOnePercentage = votesOptionOne.length / totalVotes * 100
-    const optionTwoPercentage = votesOptionTwo.length / totalVotes * 100
+    const optionOnePercentage = Math.round(votesOptionOne.length / totalVotes * 100)
+    const optionTwoPercentage = Math.round(votesOptionTwo.length / totalVotes * 100)
     return (
         <div className="answered">
-            <h4>Asked by {userName}:</h4>
-                <img src={userAvatar} alt={`Avatar of ${userId}`}/>
-                <div className="voteResult">
-                    Result:
-                    <div className="optionOne">
-                        Would you rather {optionOneText}
-                        {votesOptionOne.filter((id) => id === authedUser).length === 1
-                        ? "You voted this" : null}
-                        <ProgressBar now={optionOnePercentage} label={`${optionOnePercentage}%`}/>
-                        <br />
-                        {votesOptionOne.length} out of {totalVotes}
-                    </div>
-                    <div className="optionOne">
-                        Would you rather {optionTwoText}
-                        {votesOptionTwo.filter((id) => id === authedUser).length === 1
-                        ? "You voted this" : null}
+            <Row sx={6}>
+                <h3 style={{textAlign: "left", margin: "10px 5px"}}>Asked by {userName}:</h3>
+            </Row>
+            <Row>
+                <Col sm={3} style={{textAlign: "center",borderRight: "0.01em dotted #dad7d7"}}>
+                    <img src={userAvatar} alt={`Avatar of ${userId}`} className="avatar"/>
+                </Col>
+                <Col sm={9} className="voteResult">
+                    <h4 style={{textAlign: "left"}}>Result:</h4>
+                    <Row>
+                        <Col sm={5} className="optionDisplay">
+                            <span>Would you rather {optionOneText}</span>
+                            <ProgressBar now={optionOnePercentage} label={`${optionOnePercentage}%`}/>
+                            <span><strong>{votesOptionOne.length}</strong> out of <strong>{totalVotes}</strong></span>
+                            {votesOptionOne.filter((id) => id === authedUser).length === 1
+                                ? <span><i className="fas fa-check-circle youVoteOne"></i></span> 
+                                : null}
+                        </Col>
+                        <Col sm={5} className="optionDisplay">
+                            <span>Would you rather {optionTwoText}</span>
                             <ProgressBar now={optionTwoPercentage} label={`${optionTwoPercentage}%`}/>
-                        <br />
-                        {votesOptionTwo.length} out of {totalVotes}
-                    </div>
-                </div>
+                            <span><strong>{votesOptionTwo.length}</strong> out of <strong>{totalVotes}</strong></span>
+                            {votesOptionTwo.filter((id) => id === authedUser).length === 1
+                            ? <span><i className="fas fa-check-circle youVoteTwo"></i></span> 
+                            : null}
+                    </Col>
+                    </Row>
+                </Col>
+            </Row>
         </div>
     )
 }

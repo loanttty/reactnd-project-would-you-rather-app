@@ -1,0 +1,41 @@
+.answered {
+  width: 100%;
+  max-width: 740px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0.02, 0.04);
+}
+
+.optionDisplay {
+  margin: 15px;
+  border: royalblue dotted 0.05em;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.progress {
+  width: 170px;
+  margin: 15px 0;
+}
+
+.youVoteOne {
+  position: absolute;
+  right: 600px;
+  top: 180px;
+  font-size: 50px;
+  background-color: cornsilk;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.youVoteTwo {
+  position: absolute;
+  right: 340px;
+  top: 180px;
+  font-size: 50px;
+  background-color: cornsilk;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}

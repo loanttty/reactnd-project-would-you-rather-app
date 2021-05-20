@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Redirect } from 'react-router';
 import {handleVoteUpdating} from "../actions/questions"
 import DisplayVote from './DisplayVote';
+import "./CreateVote.css"
+import {Row, Col} from "react-bootstrap"
 
 class CreateVote extends Component {
     state = {
@@ -38,28 +40,35 @@ class CreateVote extends Component {
         if (question.length !== 0) {
             const unansweredCheck = users[authedUser].answers[question[0].id]
             return (
-                <div className="question">
+                <div>
                     {unansweredCheck === undefined
                     ? <div className="unanswered">
-                        <h4>{users[question[0].author].name} asks</h4>
-                        <img src={users[question[0].author].avatarURL} alt={`Avatar of ${question[0].author}`}/>
-                        <form onSubmit={this.updateVote}>
-                            Would you rather...
-                            <br />
-                            <input type="radio" id={question[0].id}
-                                    value="optionOne"
-                                    name="option"
-                                    onChange={this.handleVote}/>
-                            {question[0].optionOne.text}
-                            <br/>
-                            <input type="radio" id={question[0].id} 
-                                    value="optionTwo"
-                                    name="option"
-                                    onChange={this.handleVote}/>
-                            {question[0].optionTwo.text}
-                            <br/>
-                            <button type="submit" className="btn">Submit</button>
-                        </form>
+                        <Row sx={6} style={{borderBottom: "0.01em solid #dad7d7", margin: "5px"}}>
+                            <h3 style={{textAlign: "left", margin: "5px"}}>{users[question[0].author].name} asks</h3>
+                        </Row>
+                        <Row>
+                            <Col sm={4} style={{textAlign: "center"}}>
+                                <img src={users[question[0].author].avatarURL} alt={`Avatar of ${question[0].author}`} className="avatar"/>
+                            </Col>
+                            <Col sm={8}>
+                                <form onSubmit={this.updateVote}>
+                                    <h4 style={{textAlign: "left"}}>Would you rather...</h4>
+                                    <input type="radio" id={question[0].id}
+                                            value="optionOne"
+                                            name="option"
+                                            onChange={this.handleVote}/>
+                                    <span>{question[0].optionOne.text}</span>
+                                    <br/>
+                                    <input type="radio" id={question[0].id} 
+                                            value="optionTwo"
+                                            name="option"
+                                            onChange={this.handleVote}/>
+                                    <span>{question[0].optionTwo.text}</span>
+                                    <br/>
+                                    <button type="submit" className="btn">Submit</button>
+                                </form>
+                            </Col>
+                        </Row>
                     </div>
                     : <DisplayVote userName={users[question[0].author].name}
                                    userAvatar={users[question[0].author].avatarURL}

@@ -19,6 +19,12 @@
   width: 80px;
   border: cornflowerblue solid 0.01em;
   border-radius: 20px;
+  transition: all 200ms ease-in-out;
+}
+
+.App .link:hover {
+  background-color: cornflowerblue;
+  color: whitesmoke;
 }
 
 .App .link:focus {
@@ -86,6 +92,12 @@
   box-shadow: 5px 5px 5px 1px rgba(0, 0, 0.02, 0.04);
   font-weight: bolder;
   margin: 10px auto;
+  transition: all 200ms ease-in-out;
+}
+
+.App .btn:hover {
+  background-color: cornflowerblue;
+  color: whitesmoke;
 }
 
 .App .error {

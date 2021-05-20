@@ -15,11 +15,11 @@ class DisplayQuestion extends Component {
                 <div className="question">
                     <h4>Would you rather</h4>
                     <div className="optionText">...{question.optionOne.text}...</div>
-                    <button className="btn">
-                        <Link to={`/questions/${question.id}`} style={{textDecoration: "none"}}>
+                    <div style={{marginBottom: "10px"}}>
+                        <Link to={`/questions/${question.id}`} className="viewFullBtn">
                             View Full
                         </Link>
-                    </button>
+                    </div>
                 </div>
             </div>
         )

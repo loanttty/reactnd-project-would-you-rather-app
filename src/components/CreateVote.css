@@ -1,0 +1,16 @@
+.unanswered {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0.02, 0.04);
+}
+
+span {
+  color: cornflowerblue;
+  font-size: larger;
+  font-style: italic;
+  margin: 5px;
+}
