@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { Redirect } from 'react-router';
 import {handleVoteUpdating} from "../actions/questions"
 import DisplayVote from './DisplayVote';
 import "./CreateVote.css"
@@ -10,14 +9,13 @@ class CreateVote extends Component {
     state = {
         selectedOption: '',
         questionId: '',
-        toHome: false
     }
 
     handleVote = (e) => {
         this.setState({
             selectedOption:e.target.value,
             questionId: e.target.id,
-            toHome: false})
+        })
     }
 
     updateVote = (e) => {
@@ -28,15 +26,11 @@ class CreateVote extends Component {
             questionId,
             answer: selectedOption}))
         
-        this.setState({toHome: true})
     }
 
     render() {
         const {authedUser,users,question} = this.props
-        const {toHome} = this.state
-        if (toHome === true) {
-            return <Redirect to="/" />
-        }
+
         if (question.length !== 0) {
             const unansweredCheck = users[authedUser].answers[question[0].id]
             return (
@@ -81,7 +75,7 @@ class CreateVote extends Component {
                     }
                 </div>)
         } else {
-            return null
+            return <h4>Question does not exist.</h4>
         }
     }
 }
